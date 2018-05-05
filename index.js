@@ -18,54 +18,58 @@ function Paystack(key) {
 
 const resources = {
   customer: require("./resources/customer"),
+  subaccount: require("./resources/subaccount"),
   misc: require("./resources/misc")
 };
 
 Paystack.prototype = {
-  extend: function(params) {
+  extend: function(func) {
     const me = this;
     return function() {
-      const args = arguments[0] || {};
+      const data = arguments[0] || {};
 
       // check method
-      const method = ["post", "get", "put"].includes(params.method)
-        ? params.method
+      const method = ["post", "get", "put"].includes(func.method)
+        ? func.method
         : (function() {
             throw new Error("Method not Allowed! - Resource declaration error");
           })();
 
-      var endpoint = me.endpoint + params.route,
-        body,
+      var endpoint = me.endpoint + func.route,
         qs = {};
 
       // incase of endpoints with no params requirement
-      if (params.params) {
+      if (func.params) {
         // check args
-        params.params.filter(param => {
+        func.params.filter(param => {
           if (!param.includes("*")) return;
 
           param = param.replace("*", "");
-          if (!(param in args)) {
+          if (!(param in data)) {
             throw new Error(`Parameter '${param}' is required`);
           }
 
           return;
         });
-
-        body = args;
       }
 
-      // incase of endpoints with no params requirement
-      if (params.args) {
+      // incase of endpoints with no args requirement
+      if (func.args) {
         // check args
-        params.args.filter(a => {
-          if (!a.includes("*")) return;
+        func.args.filter(a => {
+          // remove unwanted properties
+          if (!a.includes("*")) {
+            if (a in data) {
+              qs[`${a}`] = data[`${a}`];
+            }
+            return;
+          }
 
           a = a.replace("*", "");
-          if (!(a in args)) {
+          if (!(a in data)) {
             throw new Error(`Argument '${a}' is required`);
           } else {
-            qs[`${a}`] = args[`${a}`];
+            qs[`${a}`] = data[`${a}`];
           }
 
           return;
@@ -76,10 +80,10 @@ Paystack.prototype = {
       if (argsInEndpoint) {
         argsInEndpoint.map(arg => {
           arg = arg.replace(/\W/g, "");
-          if (!(arg in args)) {
+          if (!(arg in data)) {
             throw new Error(`Argument '${arg}' is required`);
           } else {
-            endpoint = endpoint.replace(`{${arg}}`, args[`${arg}`]);
+            endpoint = endpoint.replace(`{${arg}}`, data[`${arg}`]);
           }
         });
       }
@@ -90,14 +94,14 @@ Paystack.prototype = {
         json: true,
         method: method.toUpperCase(),
         headers: {
-          Authorization: ["Bearer ", me.key].join("")
+          Authorization: `Bearer ${me.key}`
         }
       };
 
       if (method == "post" || method == "put") {
-        options.body = args;
+        options.body = data;
       } else {
-        options.qs = args;
+        options.qs = qs;
       }
 
       return request(options);

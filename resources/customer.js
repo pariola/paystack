@@ -11,7 +11,15 @@ module.exports = {
   create: {
     method: "post",
     route: route,
-    params: ["first_name", "last_name", "email*", "phone"]
+    params: ["first_name", "last_name", "email*", "phone", "metadata"]
+  },
+
+  /*
+  List customers
+  */
+  list: {
+    method: "get",
+    route: route
   },
 
   /*
@@ -19,45 +27,33 @@ module.exports = {
   */
   get: {
     method: "get",
-    route: [route, "/{id}"].join(""),
-    args: ["id*"]
+    route: `${route}/{id}`
   },
 
   /*
-List customers
-*/
-  list: {
-    method: "get",
-    route: route
-  },
-
-  /*
-Update customer
-@param: first_name, last_name, email, phone
-*/
+  Update customer
+  */
   update: {
     method: "put",
-    route: [route, "/{id}"].join(""),
-    params: ["id*", "first_name", "last_name", "email", "phone"]
+    route: `${route}/{id}`,
+    params: ["first_name", "last_name", "phone", "metadata"]
   },
 
   /*
-White/Blacklist customer
-@param: customer, risk_action ('allow' to whitelist or 'deny' to blacklist)
-*/
+  White/Blacklist customer
+  */
   setRiskAction: {
     method: "post",
-    route: [route, "/set_risk_action"].join(""),
+    route: `${route}/set_risk_action`,
     params: ["customer*", "risk_action"]
   },
 
   /*
-Delete Authorization for customer
-@param: authorization_code
-*/
-  deleteAuth: {
+  Deactivate Authorization for customer
+  */
+  deactivateAuth: {
     method: "post",
-    route: [route, "/deactivate_authorization"].join(""),
+    route: `${route}/deactivate_authorization`,
     params: ["authorization_code*"]
   }
 };
