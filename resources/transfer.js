@@ -40,5 +40,11 @@ module.exports = {
     params: ["transfer_code*", "otp*"] // ...
   },
 
-  // Bulk Transfer Later 👋
+  /*
+  Bulk Transfer
+  */
+ bulkTransfer: {
+    method: "post",
+    route: `${route}/bulk`
+  }
 };

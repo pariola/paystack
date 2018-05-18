@@ -41,7 +41,7 @@ module.exports = {
   /*
   Charge authorization
   */
-  charge: {
+  chargeAuth: {
     method: "post",
     route: [route, "/charge_authorization"].join(""),
     params: ["reference", "authorization_code*", "email*", "amount*"]
