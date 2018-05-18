@@ -1,5 +1,5 @@
 /*
-Paystack API - Customer
+Paystack API - Subaccount
 */
 
 const route = "/subaccount";
