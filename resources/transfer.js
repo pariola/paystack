@@ -20,7 +20,7 @@ module.exports = {
   list: {
     method: "get",
     route: route,
-    args: ["perPage", "page"]
+    params: ["perPage", "page"]
   },
 
   /*

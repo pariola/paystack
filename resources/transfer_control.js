@@ -10,17 +10,40 @@ module.exports = {
   */
   balance: {
     method: "get",
-    route: '/balance'
+    route: "/balance"
   },
 
   /*
   Resend OTP
   */
-  resendOtp: {
+  resendOTP: {
     method: "post",
-    route: route,
-    args: ["transfer_code*", "reason*"]
+    route: `${route}/resend_otp`,
+    params: ["transfer_code*", "reason*"]
   },
 
-  // Disabling or Enabling of OTP: Later
+  /*
+  Disable OTP
+  */
+  disableOTP: {
+    method: "post",
+    route: `${route}/disable_otp`
+  },
+
+  /*
+  Finalize Disabling of OTP
+  */
+  finalizeDisableOTP: {
+    method: "post",
+    route: `${route}/disable_otp_finalize`,
+    params: ["otp*"]
+  },
+
+  /*
+  Enable OTP
+  */
+  enableOTP: {
+    method: "post",
+    route: `${route}/enable_otp`
+  }
 };
