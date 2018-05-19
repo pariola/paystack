@@ -18,7 +18,21 @@ function Paystack(key) {
 
 const resources = {
   customer: require("./resources/customer"),
+  bulk_charge: require("./resources/bulk_charge"),
+  charge: require("./resources/charge"),
+  control_panel: require("./resources/control_panel"),
+  invoice: require("./resources/invoice"),
+  page: require("./resources/page"),
+  plan: require("./resources/plan"),
+  refund: require("./resources/refund"),
+  settlement: require("./resources/settlement"),
   subaccount: require("./resources/subaccount"),
+  subscription: require("./resources/subscription"),
+  transaction: require("./resources/transaction"),
+  transfer_control: require("./resources/transfer_control"),
+  transfer_recipient: require("./resources/transfer_recipient"),
+  transfer: require("./resources/transfer"),
+  verification: require("./resources/verification"),
   misc: require("./resources/misc")
 };
 

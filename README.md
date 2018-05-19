@@ -124,7 +124,7 @@ paystack.transactions.list({ perPage: 20 }).then(function(error, body) {
   * create
   * list
   * get
-* settlements
+* settlement
   * list
 * subaccount
   * create
