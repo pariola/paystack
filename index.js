@@ -129,7 +129,8 @@ Paystack.prototype = {
       }
       Paystack.prototype[i] = new anon();
     }
-  }
+  },
+  FeeHelper: require("./resources/fee_helper")
 };
 
 module.exports = Paystack;

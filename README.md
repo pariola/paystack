@@ -60,6 +60,29 @@ paystack.transactions.list({ perPage: 20 }).then(function(error, body) {
 });
 ```
 
+### Extras
+
+A function to add Paystack's fee to your charging fee
+
+```js
+const helper = new paystack.FeeHelper();
+console.log(helper.addFeesTo(5000));
+```
+
+Outputs → `5077` which includes Paystack's fee upfront
+
+OR set your desired parameters
+
+```js
+const helper = new paystack.FeeHelper({
+percentage: ...,
+  cap: ...,
+  threshold: ...,
+  additionalCharge: ....
+});
+console.log(helper.addFeesTo(5000));
+```
+
 ### Resources
 
 * customer
@@ -144,26 +167,28 @@ paystack.transactions.list({ perPage: 20 }).then(function(error, body) {
   * disableOTP
   * finalizeDisableOTP
 * transfer_recipient
-    * create
-    * list
+  * create
+  * list
 * transfer
-    * create
-    * list
-    * get
-    * finalize
-    * bulkTransfer
+  * create
+  * list
+  * get
+  * finalize
+  * bulkTransfer
 * verification
-    * resolveBVN
-    * matchBVN
-    * resolveAccount
-    * resolveBIN
-    * resolvePhone
+  * resolveBVN
+  * matchBVN
+  * resolveAccount
+  * resolveBIN
+  * resolvePhone
 * misc
   * list_banks
+* feeHelper
 
 ### Contributing
 
 * Please do 🧡
 
 ### TODO
-- Make it available on NPM
+
+* [ ] Create a Paystack Events `express` middleware
