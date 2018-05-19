@@ -4,15 +4,20 @@ Yet a new [Paystack](https://paystack.co/) API wrapper 😉
 
 ### Installation
 
+For Yarn
 ```
-npm install ...
+yarn add paystack-api
+```
+For NPM
+```
+npm install paystack-api --save
 ```
 
 ### Usage
 
 ```js
 // Require the library
-var paystack = require("...")("secret_key");
+var paystack = require("paystack-api")("secret_key");
 ```
 
 #### Making calls
