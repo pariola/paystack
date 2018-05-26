@@ -62,6 +62,8 @@ paystack.transactions.list({ perPage: 20 }).then(function(error, body) {
 
 ### Extras
 
+#### I
+
 A function to add Paystack's fee to your charging fee
 
 ```js
@@ -82,6 +84,23 @@ percentage: ...,
 });
 console.log(helper.addFeesTo(5000));
 ```
+
+#### II
+
+A Paystack Events helper (Express Middleware)
+```js
+const paystack = require("paystack-api")("secret_key");
+const events = paystack.Events;
+
+events.on("event_name", data => {
+    // Act
+  console.log("hola!");
+});
+
+// Hooks with Express
+app.post("/my/webhook/url", events.middleware);
+```
+
 
 ### Resources
 
@@ -191,4 +210,4 @@ console.log(helper.addFeesTo(5000));
 
 ### TODO
 
-* [ ] Create a Paystack Events `express` middleware
+* [X] Create a Paystack Events `express` middleware

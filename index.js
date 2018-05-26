@@ -5,6 +5,7 @@ Paystack API wrapper
 
 const request = require("request-promise");
 const endpoint = "https://api.paystack.co";
+const Events = require("./resources/events");
 
 function Paystack(key) {
   if (!(this instanceof Paystack)) {
@@ -14,6 +15,9 @@ function Paystack(key) {
   this.endpoint = endpoint;
   this.key = key;
   this.import();
+
+  // Setup Events
+  this.Events = new Events(this.key);
 }
 
 const resources = {
