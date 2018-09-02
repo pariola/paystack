@@ -28,7 +28,7 @@ module.exports = {
   resolveAccount: {
     method: "get",
     route: `${route}/resolve`,
-    params: ["account_number", "bank_code"]
+    args: ["account_number", "bank_code"]
   },
 
   /*
