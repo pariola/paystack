@@ -11,6 +11,6 @@ module.exports = {
   list: {
     method: "get",
     route: route,
-    params: ["from", "to", "subaccount"] // ...
+    args: ["from", "to", "subaccount"] // ...
   }
 };
