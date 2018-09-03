@@ -79,7 +79,7 @@ module.exports = {
   export: {
     method: "get",
     route: [route, "/export"].join(""),
-    params: ["from", "to", "settled", "payment_page"]
+    args: ["from", "to", "settled", "payment_page"]
   },
 
   /*
