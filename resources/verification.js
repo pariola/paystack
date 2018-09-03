@@ -19,7 +19,7 @@ module.exports = {
   matchBVN: {
     method: "get",
     route: `${route}/match_bvn`,
-    params: ["account_number*", "bank_code*", "bvn*"]
+    args: ["account_number*", "bank_code*", "bvn*"]
   },
 
   /*
