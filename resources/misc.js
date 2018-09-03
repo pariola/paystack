@@ -6,6 +6,6 @@ module.exports = {
   list_banks: {
     method: "get",
     route: "/bank",
-    params: ["perPage", "page"]
+    args: ["perPage", "page"]
   }
 };

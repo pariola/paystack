@@ -18,7 +18,7 @@ module.exports = {
  Charge
   */
   charge: {
-    method: "get",
+    method: "post",
     route: `${route}/charge`,
     params: ["email*", "amount*"]
   },
