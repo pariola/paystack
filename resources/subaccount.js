@@ -25,7 +25,7 @@ module.exports = {
   list: {
     method: "get",
     route: route,
-    params: ["perPage", "page"]
+    args: ["perPage", "page"]
   },
 
   /*
