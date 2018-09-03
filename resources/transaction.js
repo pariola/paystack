@@ -17,8 +17,7 @@ module.exports = {
   */
   verify: {
     method: "get",
-    route: [route, "/verify/{reference}"].join(""),
-    params: ["reference*"]
+    route: [route, "/verify/{reference}"].join("")
   },
 
   /*
@@ -34,8 +33,7 @@ module.exports = {
   */
   get: {
     method: "get",
-    route: [route, "/{id}"].join(""),
-    params: ["id*"]
+    route: [route, "/{id}"].join("")
   },
 
   /*
@@ -52,8 +50,7 @@ module.exports = {
   */
   viewTimeline: {
     method: "get",
-    route: [route, "/timeline/{id}"].join(""),
-    params: ["id*"]
+    route: [route, "/timeline/{id}"].join("")
   },
 
   /*
@@ -61,8 +58,7 @@ module.exports = {
   */
   viewTimelineRef: {
     method: "get",
-    route: [route, "/timeline/{reference}"].join(""),
-    params: ["reference*"]
+    route: [route, "/timeline/{reference}"].join("")
   },
 
   /*
