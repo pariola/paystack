@@ -19,7 +19,8 @@ module.exports = {
   */
   list: {
     method: "get",
-    route: route
+    route: route,
+    args: ["customer", "status", "currency", "paid", "include_archive"]
   },
 
   /*
