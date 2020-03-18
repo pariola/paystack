@@ -25,7 +25,8 @@ module.exports = {
   */
   list: {
     method: "get",
-    route: route
+    route: route,
+    args: ["perPage", "page", "customer", "status", "from", "to", "amount"]
   },
 
   /*
@@ -84,7 +85,7 @@ module.exports = {
   reAuthorize: {
     method: "post",
     route: [route, "/request_reauthorization"].join(""),
-    params: ["authorization_code*", "amoun*", "email*"]
+    params: ["authorization_code*", "amount*", "email*"]
   },
 
   /*
