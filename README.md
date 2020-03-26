@@ -188,6 +188,8 @@ app.post("/my/webhook/url", events.middleware);
 * transfer_recipient
   * create
   * list
+  * update
+  * remove
 * transfer
   * create
   * list

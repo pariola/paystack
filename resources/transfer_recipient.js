@@ -21,5 +21,25 @@ module.exports = {
     method: "get",
     route: route,
     args: ["perPage", "page"]
-  }
+  },
+
+  /**
+   * Update Transfer Recipient
+   */
+
+   update: {
+     method: 'put',
+     route: [route, "/{recipient_code}"].join(""),
+     params: ["name*", "email*"]
+   },
+
+   /**
+    * Delete Transfer Recipient
+    */
+
+    remove: {
+      method: 'delete',
+      route: [route, "/{recipient_code}"].join(""),
+    }
+
 };
