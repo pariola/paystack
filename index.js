@@ -47,7 +47,7 @@ Paystack.prototype = {
       const data = arguments[0] || {};
 
       // check method
-      const method = ["post", "get", "put"].includes(func.method)
+      const method = ["post", "get", "put", "delete"].includes(func.method)
         ? func.method
         : (function() {
             throw new Error("Method not Allowed! - Resource declaration error");
