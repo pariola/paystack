@@ -196,6 +196,7 @@ app.post("/my/webhook/url", events.middleware);
   * get
   * finalize
   * bulkTransfer
+  * verify
 * verification
   * resolveBVN
   * matchBVN
