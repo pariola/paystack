@@ -109,6 +109,7 @@ app.post("/my/webhook/url", events.middleware);
   * get
   * list
   * update
+  * validate
   * setRiskAction
   * deactivateAuth
 * transaction

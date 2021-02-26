@@ -41,6 +41,15 @@ module.exports = {
   },
 
   /*
+  Validate customer
+  */
+ validate: {
+  method: "post",
+  route: `${route}/{id}/identification`,
+  params: ["first_name*", "last_name*", "type*", "value*", "country*"]
+},
+
+  /*
   White/Blacklist customer
   */
   setRiskAction: {
