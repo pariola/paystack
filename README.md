@@ -204,6 +204,11 @@ app.post("/my/webhook/url", events.middleware);
   * resolveAccount
   * resolveBIN
   * resolvePhone
+* nuban
+  * create
+  * list
+  * get
+  * deactivate
 * misc
   * list_banks
 * feeHelper

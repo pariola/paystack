@@ -26,6 +26,7 @@ const resources = {
   charge: require("./resources/charge"),
   control_panel: require("./resources/control_panel"),
   invoice: require("./resources/invoice"),
+  nuban: require("./resources/nuban"),
   page: require("./resources/page"),
   plan: require("./resources/plan"),
   refund: require("./resources/refund"),
