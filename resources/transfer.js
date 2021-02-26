@@ -46,5 +46,13 @@ module.exports = {
  bulkTransfer: {
     method: "post",
     route: `${route}/bulk`
+  },
+
+  /*
+  Verify Transfer
+  */
+ verify: {
+    method: "get",
+    route: `${route}/verify/{reference}`
   }
 };
