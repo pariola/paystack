@@ -101,6 +101,25 @@ events.on("event_name", data => {
 app.post("/my/webhook/url", events.middleware);
 ```
 
+### Extend resources/methods
+
+```js
+const PaystackAPI = require("paystack-api")
+
+class Paystack extends PaystackApi {
+  constructor(key) {
+    super(key);
+    // Update BVN match method with the new route
+    this.verification.matchBVN = this.extend({
+      method: 'post',
+      route: `/bvn/match`,
+      args: ['account_number*', 'bank_code*', 'bvn*'],
+    });
+  }
+}
+
+const paystack = new Paystack("secret_key");
+```
 
 ### Resources
 
