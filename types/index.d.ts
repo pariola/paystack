@@ -13,7 +13,7 @@ declare module "paystack-api" {
 
   class PlanResource {
     get(options: GetPlanOptions): Promise<Object>;
-    list(options: ListOptions): Promise<Object>;
+    list(options: ListPlansOptions): Promise<Object>;
     create(options: CreatePlanOptions): Promise<Object>;
     update(options: UpdatePlanOptions): Promise<Object>;
   }

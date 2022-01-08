@@ -1,5 +1,7 @@
 // types/interfaces.d.ts
 
+type Currency = "NGN" | "GHS" | "ZAR" | "USD";
+
 interface ListOptions {
   page: Number;
   perPage: Number;
@@ -12,14 +14,35 @@ interface GetPlanOptions {
   id: string;
 }
 
+type PlanInterval = "daily" | "weekly" | "monthly" | "biannually" | "annually";
+
+interface ListPlansOptions extends ListOptions {
+  status: string;
+  amount: Number;
+  interval: PlanInterval;
+}
+
 interface CreatePlanOptions {
   name: string;
   amount: Number;
-  interval: string;
+  interval: PlanInterval;
+  description: string;
+  send_sms: boolean;
+  send_invoices: boolean;
+  currency: Currency;
+  invoice_limit: Number;
 }
 
 interface UpdatePlanOptions {
-  [key: string]: any;
+  id: string;
+  name: string;
+  amount: Number;
+  interval: PlanInterval;
+  description: string;
+  send_sms: boolean;
+  send_invoices: boolean;
+  currency: Currency;
+  invoice_limit: Number;
 }
 
 // Customer Resource
