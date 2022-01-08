@@ -5,6 +5,7 @@
 declare module "paystack-api" {
   interface API {
     plan: PlanResource;
+    page: PaymentPageResource;
     customer: CustomerResource;
   }
 
@@ -25,5 +26,13 @@ declare module "paystack-api" {
     validate(options: ValidateCustomerOptions): Promise<Object>;
     setRiskAction(options: SetCustomerRiskActionOptions): Promise<Object>;
     deactivateAuth(options: DeactivateCustomerAuthOptions): Promise<Object>;
+  }
+
+  class PaymentPageResource {
+    get(options: GetPaymentPageOptions): Promise<Object>;
+    list(options: ListPaymentPagesOption): Promise<Object>;
+    create(options: CreatePaymentPageOptions): Promise<Object>;
+    update(options: UpdatePaymentPageOptions): Promise<Object>;
+    slugAvailable(options: CheckSlugAvailablilityOptions): Promise<Object>;
   }
 }

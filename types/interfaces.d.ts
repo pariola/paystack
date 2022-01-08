@@ -59,3 +59,36 @@ interface SetCustomerRiskActionOptions {
 interface DeactivateCustomerAuthOptions {
   authorization_code: string;
 }
+
+// Payment Page Resource
+
+interface GetPaymentPageOptions {
+  id: string;
+}
+
+interface ListPaymentPagesOption extends ListOptions {
+  to: string;
+  from: string;
+}
+
+interface CreatePaymentPageOptions {
+  name: string;
+  description: string;
+  amount: Number;
+  slug: string;
+  metadata: Object;
+  redirect_url: string;
+  custom_fields: [any];
+}
+
+interface UpdatePaymentPageOptions {
+  id: string;
+  name: string;
+  description: string;
+  amount: Number;
+  active: boolean;
+}
+
+interface CheckSlugAvailablilityOptions {
+  slug: string;
+}
