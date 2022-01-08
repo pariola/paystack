@@ -25,13 +25,19 @@ interface UpdatePlanOptions {
 // Customer Resource
 
 interface GetCustomerOptions {
+  // id can be email or customer code
   id: string;
 }
 
+interface ListCustomersOptions extends ListOptions {
+  to: string;
+  from: string;
+}
+
 interface CreateCustomerOptions {
+  email: string;
   first_name: string;
   last_name: string;
-  email: string;
   phone: string;
   metadata: Object;
 }
@@ -43,17 +49,24 @@ interface UpdateCustomerOptions {
   metadata: Object;
 }
 
+type ValidateCustomerIdentification = "bvn" | "bank_account";
+
 interface ValidateCustomerOptions {
   first_name: string;
   last_name: string;
-  type: string;
+  type: ValidateCustomerIdentification;
   value: string;
   country: string;
+  bvn: string;
+  bank_code: string;
+  account_number: string;
 }
+
+type CustomerRiskAction = "default" | "allow" | "deny";
 
 interface SetCustomerRiskActionOptions {
   customer: string;
-  risk_action: string;
+  risk_action: CustomerRiskAction;
 }
 
 interface DeactivateCustomerAuthOptions {

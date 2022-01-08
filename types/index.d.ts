@@ -20,7 +20,7 @@ declare module "paystack-api" {
 
   class CustomerResource {
     get(options: GetCustomerOptions): Promise<Object>;
-    list(options: ListOptions): Promise<Object>;
+    list(options: ListCustomersOptions): Promise<Object>;
     create(options: CreateCustomerOptions): Promise<Object>;
     update(options: UpdateCustomerOptions): Promise<Object>;
     validate(options: ValidateCustomerOptions): Promise<Object>;
