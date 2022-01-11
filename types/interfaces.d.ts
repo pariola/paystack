@@ -142,3 +142,16 @@ interface ListSettlementOptions extends ListOptions {
   to: string;
   from: string;
 }
+
+// Transfer Control Resource
+
+type ResendOTPReason = "resend_otp" | "transfer";
+
+interface ResendOTPOptions {
+  transfer_code: string;
+  reason: ResendOTPReason;
+}
+
+interface FinalizeDisableOTPOptions {
+  otp: string;
+}

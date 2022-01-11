@@ -8,6 +8,7 @@ declare module "paystack-api" {
     page: PaymentPageResource;
     customer: CustomerResource;
     control_panel: ControlPanelResource;
+    transfer_control: TransferControlResource;
   }
 
   export default function Paystack(secretKey: string): API;
@@ -44,5 +45,13 @@ declare module "paystack-api" {
 
   class SettlementResource {
     list(options: ListSettlementOptions): Promise<Object>;
+  }
+
+  class TransferControlResource {
+    balance(): Promise<Object>;
+    enableOTP(): Promise<Object>;
+    disableOTP(): Promise<Object>;
+    resendOTP(options: ResendOTPOptions): Promise<Object>;
+    finalizeDisableOTP(options: FinalizeDisableOTPOptions): Promise<Object>;
   }
 }
