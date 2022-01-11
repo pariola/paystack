@@ -159,7 +159,7 @@ interface FinalizeDisableOTPOptions {
 // Refund Resource
 
 interface GetRefundOptions {
-  reference: string;
+  trans_id: string;
 }
 
 interface ListRefundsOptions extends ListOptions {
