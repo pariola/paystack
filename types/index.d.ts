@@ -7,6 +7,7 @@ declare module "paystack-api" {
     plan: PlanResource;
     page: PaymentPageResource;
     customer: CustomerResource;
+    control_panel: ControlPanelResource;
   }
 
   export default function Paystack(secretKey: string): API;
@@ -34,5 +35,10 @@ declare module "paystack-api" {
     create(options: CreatePaymentPageOptions): Promise<Object>;
     update(options: UpdatePaymentPageOptions): Promise<Object>;
     slugAvailable(options: CheckSlugAvailablilityOptions): Promise<Object>;
+  }
+
+  class ControlPanelResource {
+    getSessionTimeout(): Promise<Object>;
+    updeteSessionTimeout(options: UpdateSessionTimeoutOptions): Promise<Object>;
   }
 }

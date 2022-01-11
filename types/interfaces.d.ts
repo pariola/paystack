@@ -128,3 +128,9 @@ interface UpdatePaymentPageOptions {
 interface CheckSlugAvailablilityOptions {
   slug: string;
 }
+
+// Control Panel Resource
+
+interface UpdateSessionTimeoutOptions {
+  timeout: Number;
+}
