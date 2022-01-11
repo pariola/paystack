@@ -155,3 +155,24 @@ interface ResendOTPOptions {
 interface FinalizeDisableOTPOptions {
   otp: string;
 }
+
+// Refund Resource
+
+interface GetRefundOptions {
+  reference: string;
+}
+
+interface ListRefundsOptions extends ListOptions {
+  to: string;
+  from: string;
+  reference: string;
+  currency: Currency;
+}
+
+interface CreateRefundOptions {
+  transaction: string;
+  amount: Number;
+  currency: Currency;
+  customer_note: string;
+  merchant_note: string;
+}
