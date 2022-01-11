@@ -41,4 +41,8 @@ declare module "paystack-api" {
     getSessionTimeout(): Promise<Object>;
     updeteSessionTimeout(options: UpdateSessionTimeoutOptions): Promise<Object>;
   }
+
+  class SettlementResource {
+    list(options: ListSettlementOptions): Promise<Object>;
+  }
 }

@@ -134,3 +134,11 @@ interface CheckSlugAvailablilityOptions {
 interface UpdateSessionTimeoutOptions {
   timeout: Number;
 }
+
+// Settlement Resource
+
+interface ListSettlementOptions extends ListOptions {
+  id: string;
+  to: string;
+  from: string;
+}
