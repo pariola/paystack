@@ -11,7 +11,7 @@ module.exports = {
   create: {
     method: "post",
     route: route,
-    params: ["first_name", "last_name", "email*", "phone", "metadata"]
+    params: ["email"],
   },
 
   /*
@@ -20,7 +20,7 @@ module.exports = {
   list: {
     method: "get",
     route: route,
-    args: ["perPage", "page"]
+    args: ["perPage", "page", "from", "to"],
   },
 
   /*
@@ -28,7 +28,7 @@ module.exports = {
   */
   get: {
     method: "get",
-    route: `${route}/{id}`
+    route: `${route}/{id}`,
   },
 
   /*
@@ -37,17 +37,16 @@ module.exports = {
   update: {
     method: "put",
     route: `${route}/{id}`,
-    params: ["first_name", "last_name", "phone", "metadata"]
   },
 
   /*
   Validate customer
   */
- validate: {
-  method: "post",
-  route: `${route}/{id}/identification`,
-  params: ["first_name*", "last_name*", "type*", "value*", "country*"]
-},
+  validate: {
+    method: "post",
+    route: `${route}/{id}/identification`,
+    params: ["first_name", "last_name", "type", "value", "country", "bvn"],
+  },
 
   /*
   White/Blacklist customer
@@ -55,7 +54,7 @@ module.exports = {
   setRiskAction: {
     method: "post",
     route: `${route}/set_risk_action`,
-    params: ["customer*", "risk_action"]
+    params: ["customer"],
   },
 
   /*
@@ -64,6 +63,6 @@ module.exports = {
   deactivateAuth: {
     method: "post",
     route: `${route}/deactivate_authorization`,
-    params: ["authorization_code*"]
-  }
+    params: ["authorization_code"],
+  },
 };
