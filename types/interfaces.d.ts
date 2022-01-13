@@ -102,7 +102,7 @@ interface GetPaymentPageOptions {
   id: string;
 }
 
-interface ListPaymentPagesOption extends ListOptions {
+interface ListPaymentPagesOptions extends ListOptions {
   to: string;
   from: string;
 }
@@ -175,4 +175,32 @@ interface CreateRefundOptions {
   currency: Currency;
   customer_note: string;
   merchant_note: string;
+}
+
+// Subaccount Resource
+
+interface GetSubaccountOptions {
+  id: string;
+}
+
+interface ListSubaccountOptions extends ListOptions {
+  to: string;
+  from: string;
+}
+
+interface CreateSubaccountOptions {
+  business_name: string;
+  settlement_bank: string;
+  account_number: string;
+  percentage_charge: Number;
+  description: string;
+}
+
+interface UpdateSubaccountOptions {
+  id: string;
+  business_name: string;
+  settlement_bank: string;
+  account_number: string;
+  percentage_charge: Number;
+  description: string;
 }

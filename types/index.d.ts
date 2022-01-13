@@ -10,6 +10,8 @@ declare module "paystack-api" {
     control_panel: ControlPanelResource;
     transfer_control: TransferControlResource;
     refund: RefundResource;
+    settlement: SettlementResource;
+    subaccount: SubaccountResource;
   }
 
   export default function Paystack(secretKey: string): API;
@@ -33,7 +35,7 @@ declare module "paystack-api" {
 
   class PaymentPageResource {
     get(options: GetPaymentPageOptions): Promise<Object>;
-    list(options: ListPaymentPagesOption): Promise<Object>;
+    list(options: ListPaymentPagesOptions): Promise<Object>;
     create(options: CreatePaymentPageOptions): Promise<Object>;
     update(options: UpdatePaymentPageOptions): Promise<Object>;
     slugAvailable(options: CheckSlugAvailablilityOptions): Promise<Object>;
@@ -60,5 +62,12 @@ declare module "paystack-api" {
     get(options: GetRefundOptions): Promise<Object>;
     list(options: ListRefundsOptions): Promise<Object>;
     create(options: CreateRefundOptions): Promise<Object>;
+  }
+
+  class SubaccountResource {
+    get(options: GetSubaccountOptions): Promise<Object>;
+    list(options: ListSubaccountOptions): Promise<Object>;
+    create(options: CreateSubaccountOptions): Promise<Object>;
+    update(options: UpdateSubaccountOptions): Promise<Object>;
   }
 }
