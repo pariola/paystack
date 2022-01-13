@@ -13,6 +13,9 @@ declare module "paystack-api" {
     refund: RefundResource;
     settlement: SettlementResource;
     subaccount: SubaccountResource;
+    charge: ChargeResource;
+    bulk_charge: BulkChargeResource;
+    invoice: InvoiceResource;
   }
 
   export default function Paystack(secretKey: string): API;
@@ -77,5 +80,35 @@ declare module "paystack-api" {
     list(options: ListSubaccountOptions): Promise<Object>;
     create(options: CreateSubaccountOptions): Promise<Object>;
     update(options: UpdateSubaccountOptions): Promise<Object>;
+  }
+
+  class ChargeResource {
+    charge(options: CreateChargeOptions): Promise<Object>;
+    submitPIN(options: SubmitPINOptions): Promise<Object>;
+    submitOTP(options: SubmitOTPOptions): Promise<Object>;
+    submitPhone(options: SubmitPhoneOptions): Promise<Object>;
+    submitBirthday(options: SubmitBirthdayOptions): Promise<Object>;
+    checkCharge(options: CheckChargeOptions): Promise<Object>;
+  }
+
+  class BulkChargeResource {
+    get(options: GetBulkChargeOptions): Promise<Object>;
+    list(options: ListBulkChargesOptions): Promise<Object>;
+    pause(options: PauseBulkChargeOptions): Promise<Object>;
+    resume(options: ResumeBulkChargeOptions): Promise<Object>;
+    create(options: CreateBulkChargeOptions): Promise<Object>;
+    getCharges(options: GetChargesInBulkChargeOptions): Promise<Object>;
+  }
+
+  class InvoiceResource {
+    get(options: GetInvoiceOptions): Promise<Object>;
+    list(options: ListInvoicesOptions): Promise<Object>;
+    create(options: CreateInvoiceOptions): Promise<Object>;
+    verify(options: VerifyInvoiceOptions): Promise<Object>;
+    notify(options: SendInvoiceNotificationOptions): Promise<Object>;
+    invoiceMetrics(options: GetInvoiceTotalsOptions): Promise<Object>;
+    updateInvoice(options: UpdateInvoiceOptions): Promise<Object>;
+    archiveInvoice(options: ArchiveInvoiceOptions): Promise<Object>;
+    draftInvoice(options: FinalizeInvoiceOptions): Promise<Object>;
   }
 }

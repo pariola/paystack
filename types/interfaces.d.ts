@@ -5,7 +5,11 @@ type Currency = "NGN" | "GHS" | "ZAR" | "USD";
 interface ListOptions {
   page: Number;
   perPage: Number;
-  [key: string]: any;
+}
+
+interface DateFilterableListOptions extends ListOptions {
+  to: string;
+  from: string;
 }
 
 // Plan Resource
@@ -52,10 +56,7 @@ interface GetCustomerOptions {
   id: string;
 }
 
-interface ListCustomersOptions extends ListOptions {
-  to: string;
-  from: string;
-}
+interface ListCustomersOptions extends DateFilterableListOptions {}
 
 interface CreateCustomerOptions {
   email: string;
@@ -102,10 +103,7 @@ interface GetPaymentPageOptions {
   id: string;
 }
 
-interface ListPaymentPagesOptions extends ListOptions {
-  to: string;
-  from: string;
-}
+interface ListPaymentPagesOptions extends DateFilterableListOptions {}
 
 interface CreatePaymentPageOptions {
   name: string;
@@ -137,10 +135,8 @@ interface UpdateSessionTimeoutOptions {
 
 // Settlement Resource
 
-interface ListSettlementOptions extends ListOptions {
+interface ListSettlementOptions extends DateFilterableListOptions {
   id: string;
-  to: string;
-  from: string;
 }
 
 // Transfer Control Resource
@@ -158,10 +154,7 @@ interface FinalizeDisableOTPOptions {
 
 // Transfer Recipient
 
-interface ListTransferRecipientOptions extends ListOptions {
-  to: string;
-  from: string;
-}
+interface ListTransferRecipientOptions extends DateFilterableListOptions {}
 
 interface CreateTransferRecipientOptions {
   type: string;
@@ -190,9 +183,7 @@ interface GetRefundOptions {
   trans_id: string;
 }
 
-interface ListRefundsOptions extends ListOptions {
-  to: string;
-  from: string;
+interface ListRefundsOptions extends DateFilterableListOptions {
   reference: string;
   currency: Currency;
 }
@@ -211,10 +202,7 @@ interface GetSubaccountOptions {
   id: string;
 }
 
-interface ListSubaccountOptions extends ListOptions {
-  to: string;
-  from: string;
-}
+interface ListSubaccountOptions extends DateFilterableListOptions {}
 
 interface CreateSubaccountOptions {
   business_name: string;
@@ -231,4 +219,143 @@ interface UpdateSubaccountOptions {
   account_number: string;
   percentage_charge: Number;
   description: string;
+}
+
+// Charge Resource
+
+interface CreateChargeOptions {
+  email: string;
+  amount: Number;
+  bank: string;
+  authorization_code: string;
+  pin: string;
+  metadata: Object;
+  reference: string;
+  ussd: Object;
+  mobile_money: Object;
+  device_id: string;
+}
+
+interface SubmitPINOptions {
+  pin: string;
+  reference: string;
+}
+
+interface SubmitOTPOptions {
+  otp: string;
+  reference: string;
+}
+
+interface SubmitPhoneOptions {
+  phone: string;
+  reference: string;
+}
+interface SubmitBirthdayOptions {
+  birthday: string;
+  reference: string;
+}
+
+interface CheckChargeOptions {
+  reference: string;
+}
+
+// Bulk Charge Resource
+
+interface GetBulkChargeOptions {
+  id: string;
+}
+
+interface ListBulkChargesOptions extends DateFilterableListOptions {}
+
+interface PauseBulkChargeOptions {
+  batch_code: string;
+}
+
+interface ResumeBulkChargeOptions {
+  batch_code: string;
+}
+
+interface CreateBulkChargeOption {
+  amount: Number;
+  authorization: string;
+}
+
+interface CreateBulkChargeOptions extends Array<CreateBulkChargeOption> {}
+
+interface GetChargesInBulkChargeOptions extends DateFilterableListOptions {
+  id: string;
+  status: string;
+}
+
+// Invoice Resource
+
+interface GetInvoiceOptions {
+  invoice_id: string;
+}
+
+interface ListInvoicesOptions extends DateFilterableListOptions {
+  status: string;
+  customer: string;
+  currency: Currency;
+  include_archive: string;
+}
+
+interface Tax {
+  name: string;
+  amount: Number;
+}
+
+interface LineItem {
+  name: string;
+  amount: Number;
+  quantity: Number;
+}
+
+interface CreateInvoiceOptions {
+  customer: string;
+  amount: Number;
+  due_date: string;
+  description: string;
+  curreny: Currency;
+  tax: [Tax];
+  line_items: [LineItem];
+  send_notification: boolean;
+  draft: boolean;
+  has_invoice: boolean;
+  invoice_number: Number;
+  split_code: string;
+}
+
+interface VerifyInvoiceOptions {
+  invoice_code: string;
+}
+
+interface SendInvoiceNotificationOptions {
+  id: string;
+}
+
+interface GetInvoiceTotalsOptions {}
+
+interface UpdateInvoiceOptions {
+  id: string;
+  customer: string;
+  amount: Number;
+  due_date: string;
+  description: string;
+  curreny: Currency;
+  tax: [Tax];
+  line_items: [LineItem];
+  send_notification: boolean;
+  draft: boolean;
+  has_invoice: boolean;
+  invoice_number: Number;
+  split_code: string;
+}
+
+interface ArchiveInvoiceOptions {
+  id: string;
+}
+
+interface FinalizeInvoiceOptions {
+  id: string;
 }
