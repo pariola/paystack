@@ -9,6 +9,7 @@ declare module "paystack-api" {
     customer: CustomerResource;
     control_panel: ControlPanelResource;
     transfer_control: TransferControlResource;
+    transfer_recipient: TransferRecipientResource;
     refund: RefundResource;
     settlement: SettlementResource;
     subaccount: SubaccountResource;
@@ -56,6 +57,13 @@ declare module "paystack-api" {
     disableOTP(): Promise<Object>;
     resendOTP(options: ResendOTPOptions): Promise<Object>;
     finalizeDisableOTP(options: FinalizeDisableOTPOptions): Promise<Object>;
+  }
+
+  class TransferRecipientResource {
+    list(options: ListTransferRecipientOptions): Promise<Object>;
+    create(options: CreateTransferRecipientOptions): Promise<Object>;
+    update(options: UpdateTransferRecipientOptions): Promise<Object>;
+    remove(options: RemoveTransferRecipientOptions): Promise<Object>;
   }
 
   class RefundResource {

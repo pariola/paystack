@@ -156,6 +156,34 @@ interface FinalizeDisableOTPOptions {
   otp: string;
 }
 
+// Transfer Recipient
+
+interface ListTransferRecipientOptions extends ListOptions {
+  to: string;
+  from: string;
+}
+
+interface CreateTransferRecipientOptions {
+  type: string;
+  name: string;
+  account_number: string;
+  bank_code: string;
+  description: string;
+  currency: string;
+  authorization_code: string;
+  metadata: Object;
+}
+
+interface UpdateTransferRecipientOptions {
+  id: string;
+  name: string;
+  email: string;
+}
+
+interface RemoveTransferRecipientOptions {
+  id: string;
+}
+
 // Refund Resource
 
 interface GetRefundOptions {
