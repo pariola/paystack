@@ -38,19 +38,19 @@ const resources = {
   transfer_recipient: require("./resources/transfer_recipient"),
   transfer: require("./resources/transfer"),
   verification: require("./resources/verification"),
-  misc: require("./resources/misc")
+  misc: require("./resources/misc"),
 };
 
 Paystack.prototype = {
-  extend: function(func) {
+  extend: function (func) {
     const me = this;
-    return function() {
+    return function () {
       const data = arguments[0] || {};
 
       // check method
       const method = ["post", "get", "put", "delete"].includes(func.method)
         ? func.method
-        : (function() {
+        : (function () {
             throw new Error("Method not Allowed! - Resource declaration error");
           })();
 
@@ -60,55 +60,37 @@ Paystack.prototype = {
       // Highest priority should go to path variables parsing and validation
       var argsInEndpoint = endpoint.match(/{[^}]+}/g);
       if (argsInEndpoint) {
-          argsInEndpoint.map(arg => {
-            arg = arg.replace(/\W/g, "");
-            if (!(arg in data)) {
-              throw new Error(`Argument '${arg}' is required`);
-            } else {
-              endpoint = endpoint.replace(`{${arg}}`, data[`${arg}`]);
-              // to avoid error, remove the path arg from body | qs params
-              // by deleting it from the data object before body | qs params are set
-              delete data[arg];
-            }
-          });
+        for (var arg of argsInEndpoint) {
+          arg = arg.replace(/\W/g, "");
+
+          if (!(arg in data)) {
+            throw new Error(`Argument '${arg}' is required`);
+          }
+
+          endpoint = endpoint.replace(`{${arg}}`, data[`${arg}`]);
+          // to avoid error, remove the path arg from body | qs params
+          // by deleting it from the data object before body | qs params are set
+          delete data[arg];
+        }
       }
 
+      // check only compulsory parameters
       // incase of endpoints with no params requirement
       if (func.params) {
-        // check args
-        func.params.filter(param => {
-          if (!param.includes("*")) return;
-
-          param = param.replace("*", "");
+        for (var param of func.params) {
           if (!(param in data)) {
             throw new Error(`Parameter '${param}' is required`);
           }
-
-          return;
-        });
+        }
       }
 
+      // build query string
       // incase of endpoints with no args requirement
       if (func.args) {
-        // check args
-        func.args.filter(a => {
-          // remove unwanted properties
-          if (!a.includes("*")) {
-            if (a in data) {
-              qs[`${a}`] = data[`${a}`];
-            }
-            return;
-          }
-
-          a = a.replace("*", "");
-          if (!(a in data)) {
-            throw new Error(`Argument '${a}' is required`);
-          } else {
-            qs[`${a}`] = data[`${a}`];
-          }
-
-          return;
-        });
+        for (var arg of func.args) {
+          qs[arg] = data[arg];
+          delete data[arg];
+        }
       }
 
       // Create request
@@ -117,8 +99,8 @@ Paystack.prototype = {
         json: true,
         method: method.toUpperCase(),
         headers: {
-          Authorization: `Bearer ${me.key}`
-        }
+          Authorization: `Bearer ${me.key}`,
+        },
       };
 
       if (method == "post" || method == "put") {
@@ -130,16 +112,16 @@ Paystack.prototype = {
       return request(options);
     };
   },
-  import: function() {
+  import: function () {
     for (var i in resources) {
-      const anon = function() {};
+      const anon = function () {};
       for (var j in resources[i]) {
         anon.prototype[j] = this.extend(resources[i][j]);
       }
       Paystack.prototype[i] = new anon();
     }
   },
-  FeeHelper: require("./resources/fee_helper")
+  FeeHelper: require("./resources/fee_helper"),
 };
 
 module.exports = Paystack;
