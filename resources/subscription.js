@@ -47,5 +47,21 @@ module.exports = {
   get: {
     method: "get",
     route: `${route}/{id}`
+  },
+
+  /*
+  Generate Update Subscription Link
+  */
+  getLink: {
+    method: "get",
+    route: `${route}/{code}/manage/link`
+  },
+
+  /*
+  Send Update Subscription Link
+  */
+  sendLink: {
+    method: "post",
+    route: `${route}/{code}/manage/email`
   }
 };
