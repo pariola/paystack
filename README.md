@@ -199,6 +199,8 @@ const paystack = new Paystack("secret_key");
   * enable
   * get
   * list
+  * getLink
+  * sendLink
 * transfer_control
   * balance
   * resendOTP
