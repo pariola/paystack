@@ -45,5 +45,22 @@ module.exports = {
   resolvePhone: {
     method: "post",
     route: `/verifications`
+  },
+
+  /*
+  Account Validation
+  */
+  validateAccount: {
+    method: "post",
+    route: `${route}/validate`,
+    args: [
+      "bank_code",
+      "country_code",
+      "account_number",
+      "account_name",
+      "account_type",
+      "document_type",
+      "document_number"
+    ]
   }
 };
