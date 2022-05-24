@@ -223,6 +223,7 @@ const paystack = new Paystack("secret_key");
   * resolveAccount
   * resolveBIN
   * resolvePhone
+  * verifyAccount
 * nuban
   * create
   * list
